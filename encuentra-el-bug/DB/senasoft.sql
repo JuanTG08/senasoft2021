@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2021 a las 22:08:16
+-- Tiempo de generación: 20-10-2021 a las 23:13:10
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 CREATE TABLE `actividad` (
   `id_room` int(12) NOT NULL,
   `id_jugador` int(12) NOT NULL,
-  `estado` int(1) NOT NULL,
   `tiempo` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -182,6 +181,13 @@ INSERT INTO `room` (`id_room`, `hexadecimal`, `player_1`, `player_2`, `player_3`
 --
 
 --
+-- Indices de la tabla `actividad`
+--
+ALTER TABLE `actividad`
+  ADD KEY `fk_id_room` (`id_room`),
+  ADD KEY `fk_id_jugador` (`id_jugador`);
+
+--
 -- Indices de la tabla `cartas`
 --
 ALTER TABLE `cartas`
@@ -228,6 +234,13 @@ ALTER TABLE `room`
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `actividad`
+--
+ALTER TABLE `actividad`
+  ADD CONSTRAINT `actividad_ibfk_1` FOREIGN KEY (`id_jugador`) REFERENCES `players` (`id_player`),
+  ADD CONSTRAINT `actividad_ibfk_2` FOREIGN KEY (`id_room`) REFERENCES `room` (`id_room`);
 
 --
 -- Filtros para la tabla `room`
