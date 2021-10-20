@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2021 a las 20:58:46
+-- Tiempo de generación: 20-10-2021 a las 22:08:16
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -47,6 +47,31 @@ CREATE TABLE `cartas` (
   `categoria` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `cartas`
+--
+
+INSERT INTO `cartas` (`id_carta`, `titulo`, `imagen`, `categoria`) VALUES
+(1, 'Pedro', '', 'Programadores'),
+(2, 'Juan', '', 'Programadores'),
+(3, 'Carlos', '', 'Programadores'),
+(4, 'Juanita', '', 'Programadores'),
+(5, 'Antonio', '', 'Programadores'),
+(6, 'Carolina', '', 'Programadores'),
+(7, 'Manuel', '', 'Programadores'),
+(8, 'Nomina', '', 'Modulo'),
+(9, 'Facturacion', '', 'Modulo'),
+(10, 'Recibos', '', 'Modulo'),
+(11, 'Comprobante Contable', '', 'Modulo'),
+(12, 'Usuarios', '', 'Modulo'),
+(13, 'Contabilidad', '', 'Modulo'),
+(14, '404', '', 'Error'),
+(15, 'Stack Overflow', '', 'Error'),
+(16, 'Memory out of range', '', 'Error'),
+(17, 'Null pointer', '', 'Error'),
+(18, 'Syntax error', '', 'Error'),
+(19, 'Encoding error', '', 'Error');
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +85,36 @@ CREATE TABLE `cartas_asig` (
   `id_carta2` varchar(32) NOT NULL,
   `id_carta3` varchar(32) NOT NULL,
   `id_carta4` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cartas_select`
+--
+
+CREATE TABLE `cartas_select` (
+  `id_room` int(12) NOT NULL,
+  `id_jugador` int(12) NOT NULL,
+  `id_carta1` int(12) NOT NULL,
+  `id_carta2` int(12) NOT NULL,
+  `id_carta3` int(12) NOT NULL,
+  `id_carta4` int(12) NOT NULL,
+  `id_carta5` int(12) NOT NULL,
+  `id_carta6` int(12) NOT NULL,
+  `id_carta7` int(12) NOT NULL,
+  `id_carta8` int(12) NOT NULL,
+  `id_carta9` int(12) NOT NULL,
+  `id_carta10` int(12) NOT NULL,
+  `id_carta11` int(12) NOT NULL,
+  `id_carta12` int(12) NOT NULL,
+  `id_carta13` int(12) NOT NULL,
+  `id_carta14` int(12) NOT NULL,
+  `id_carta15` int(12) NOT NULL,
+  `id_carta16` int(12) NOT NULL,
+  `id_carta17` int(12) NOT NULL,
+  `id_carta18` int(12) NOT NULL,
+  `id_carta19` int(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -156,7 +211,7 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT de la tabla `cartas`
 --
 ALTER TABLE `cartas`
-  MODIFY `id_carta` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_carta` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `players`
