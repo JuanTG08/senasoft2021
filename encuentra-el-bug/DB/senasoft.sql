@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2021 a las 18:13:15
+-- Tiempo de generación: 20-10-2021 a las 19:39:18
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -20,6 +20,47 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `senasoft`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cartas`
+--
+
+CREATE TABLE `cartas` (
+  `id_carta` int(12) NOT NULL,
+  `titulo` varchar(32) NOT NULL,
+  `imagen` varchar(32) NOT NULL,
+  `categoria` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cartas_asig`
+--
+
+CREATE TABLE `cartas_asig` (
+  `id_room` int(12) NOT NULL,
+  `id_jugador` int(12) NOT NULL,
+  `id_carta1` varchar(32) NOT NULL,
+  `id_carta2` varchar(32) NOT NULL,
+  `id_carta3` varchar(32) NOT NULL,
+  `id_carta4` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cartas_sistem`
+--
+
+CREATE TABLE `cartas_sistem` (
+  `id_room` int(12) NOT NULL,
+  `id_carta1` varchar(32) NOT NULL,
+  `id_carta2` varchar(32) NOT NULL,
+  `id_carta3` varchar(32) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -73,6 +114,12 @@ INSERT INTO `room` (`id_room`, `hexadecimal`, `player_1`, `player_2`, `player_3`
 --
 
 --
+-- Indices de la tabla `cartas`
+--
+ALTER TABLE `cartas`
+  ADD PRIMARY KEY (`id_carta`);
+
+--
 -- Indices de la tabla `players`
 --
 ALTER TABLE `players`
@@ -91,6 +138,12 @@ ALTER TABLE `room`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `cartas`
+--
+ALTER TABLE `cartas`
+  MODIFY `id_carta` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `players`
