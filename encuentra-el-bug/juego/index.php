@@ -14,6 +14,10 @@ require_once 'views/main/head.php';
 session_start();
 
 // Verificacion de Estado
+if (!juegoController::verifyStatus()) {
+    require_once 'views/rooms/inactivo.php';
+    Utils::exitPlay();
+}
 if (juegoController::verifyStatus()) {
     // Inicio del Aplicativo
     if (empty($_GET) && empty($_POST) && empty($_SESSION)) {
@@ -65,11 +69,6 @@ if (juegoController::verifyStatus()) {
         $jugador = new cartaController();
         $jugador->obtenerCartas();
     }
-}else{
-    require_once 'views/rooms/inactivo.php';
-    Utils::exitPlay();
 }
-
-
 
 require_once 'views/main/footer.php';

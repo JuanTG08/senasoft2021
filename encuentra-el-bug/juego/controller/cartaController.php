@@ -14,32 +14,37 @@ class cartacontroller{
         $cartas_sistem=[$cartas[0][$indice1], $cartas[1][$indice2], $cartas[2][$indice3]];
 
         $cartas_asign=[];
-        for ($i=0; $i < 4; $i++) {
+        array_push($cartas_asign, rand(1,19));
+        $r=false;
+        while ($r == true) {
+        if ( $cartas_asign[0] == $cartas_sistem[0] || $cartas_asign[0] == $cartas_sistem[1] || $cartas_asign[0] == $cartas_sistem[2]) {
             array_push($cartas_asign, rand(1,19));
-            $r=false;
-            while ($r == true) {
-                if ($cartas_asign[$i] != $cartas_sistem[0]) {
-                    if ($cartas_asign[$i] != $cartas_sistem[1]) {
-                        if ($cartas_asign[$i] != $cartas_sistem[2]) {
-                            if ($i>0) {
-                                for ($j=0; $j < $i->count(); $j++) { 
-                                    var_dump('hola');
-                                }
-                            }else{
-                                $cartas_asign=rand(1,19);
-                                $r=true;
-                            }
-                        }
-                    }
-                }
-            }
-            $r=false;
         }
+
+        // for ($i=0; $i < 4; $i++) {
+        //     array_push($cartas_asign, rand(1,19));
+        //     $r=false;
+        //     while ($r == true) {
+        //         if ($cartas_asign[$i] != $cartas_sistem[0]) {
+        //             if ($cartas_asign[$i] != $cartas_sistem[1]) {
+        //                 if ($cartas_asign[$i] != $cartas_sistem[2]) {
+        //                     for ($j=0; $j < count($cartas_asign); $j++) { 
+        //                         if ($cartas_asign[$i] != $cartas_asign[$j]) {
+        //                             $cartas_asign=rand(1,19);
+        //                             $r=true;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     $r=false;
+        // }
 
         $cartas_select=[];
         
-        var_dump($cartas_sistem);
-        var_dump($cartas_asign);
+        var_dump( json_encode($cartas_sistem));
+        var_dump( json_encode( $cartas_asign));
 
 
     }

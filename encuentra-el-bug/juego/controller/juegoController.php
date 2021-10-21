@@ -79,8 +79,9 @@ class juegoController{
         $getRoom = $room->getRoom();
 
         if ($getRoom) {
-            Utils::deleteSession('room');
+            $_SESSION['room'] = "";
             $_SESSION['room'] = $getRoom;
+
         }
     }
 

@@ -6,6 +6,8 @@ require_once 'controller/juegoController.php';
 
 session_start();
 
+var_dump($_SESSION['room']);
+
 if (isset($_POST['saveStatus']) && isset($_SESSION['Jugador'])) {
     $actividad = new actividadController();
     $actividad->guardarEstadoJugador();
@@ -17,4 +19,8 @@ if (isset($_POST['saveStatus']) && isset($_SESSION['Jugador'])) {
 if (isset($_GET['doomReload'])) {
     $actualizar = new juegoController();
     $actualizar->indJugador();
+}
+if (isset($_POST['diePlayers'])) {
+    $dieP = new actividadController();
+    $dieP->diePlayers();
 }

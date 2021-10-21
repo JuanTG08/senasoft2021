@@ -19,7 +19,7 @@ $(document).ready(function(){
             url: URL_+"peticiones.php",
             data: { compStatus : actividad },
             success: function (response) {
-                console.log(response);
+                //console.log(response);
             }
         });
     }
@@ -36,10 +36,22 @@ $(document).ready(function(){
         });
     }
 
+    const diePlayers = () => {
+        $.ajax({
+            type: "POST",
+            url: URL_+"peticiones.php",
+            data: { diePlayers : 1 },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
     setInterval(() => {
         conexionPlayerDoom();
         saveStatus();
-    }, 3000);
+        diePlayers();
+    }, 500);
 
 });
 
