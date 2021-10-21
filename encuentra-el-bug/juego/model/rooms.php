@@ -30,4 +30,22 @@ class Room{
         }
         return $response;
     }
+    public function getOneRoom(){
+        $response = false;
+        $query = $this->db->query("SELECT * FROM room WHERE hexadecimal='{$this->getHexadecimal()}'");
+        if ($query) {
+            $response = $query->fetch_object();
+        }
+        return $response;
+    }
+
+    public function setPlayer($sql_player){
+        $response = false;
+        $query = $this->db->query("UPDATE room SET ".$sql_player." WHERE id_room='{$this->getId()}'");
+
+        if ($query) {
+            $response = true;
+        }
+        return $response;
+    }
 }

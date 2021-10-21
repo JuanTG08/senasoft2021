@@ -1,16 +1,41 @@
 <?php
 require_once 'model/rooms.php';
 class salaController{
-    public function getSala($room,$id_room){
+    public function getSala($room){
+        $very = false;
         $sala_ = new Room();
-        $sala_->setId($id_room);
         $sala_->setHexadecimal($room);
+        $veri_room = $sala_->getOneRoom();
 
-        $sala = $sala_->getRoom();
-        if ($sala) {
-            $_SESSION['room'] = $sala;
+        if ($veri_room && $_SESSION['Jugador']) {
+            if ($veri_room->status === "Activo") {
+                $id_room = $veri_room->id_room;
+                $sala_->setId($id_room);
+                if ($veri_room->player_1 == null) {
+                    $very = true;
+                    $set_jugador = $sala_->setPlayer("player_1='".$_SESSION['Jugador']->id_player."'");
+                }else if ($veri_room->player_2 == null) {
+                    $very = true;
+                    $set_jugador = $sala_->setPlayer("player_2='".$_SESSION['Jugador']->id_player."'");
+                }else if ($veri_room->player_3 == null) {
+                    $very = true;
+                    $set_jugador = $sala_->setPlayer("player_3='".$_SESSION['Jugador']->id_player."'");
+                }else if ($veri_room->player_4 == null) {
+                    $very = true;
+                    $set_jugador = $sala_->setPlayer("player_4='".$_SESSION['Jugador']->id_player."'");
+                }else{
+                    echo "<script>alert('Sala Llena')</script>";
+                }
+                $veri_room = $sala_->getOneRoom();
+            }
+        }
+
+        if ($very) {
+            $_SESSION['room'] = $veri_room;
+            header('Location:'.base);
         }else{
-            echo "noaaaaaa";
+            Utils::exitPlay();
+            header('Location:'.base.'?unite');
         }
     }
 }

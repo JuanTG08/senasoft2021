@@ -13,10 +13,29 @@ require_once 'views/main/head.php';
 
 session_start();
 
+// Inicio del Aplicativo
 if (empty($_GET) && empty($_POST) && empty($_SESSION)) {
     $Index = new indexController();
     $Index->index();
+}else{
+    if (isset($_GET['create']) && isset($_POST['crear-sala'])) {
+        echo 'Create';
+    }else if (isset($_GET['unite'])) {
+        require_once 'views/rooms/unite.php';
+    }else if (isset($_GET['unite-room']) && isset($_POST['unite-room'])){
+        if (isset($_POST['nickname']) && isset($_POST['room'])) {
+            $jugador = new juegoController();
+            $jugador->createJugador($_POST['nickname']);
+
+            $ingresar = new salaController();
+            $ingresar->getSala($_POST['room']);
+        }else{
+            // No se enviaron los campos
+        }
+    }
 }
+
+//var_dump($_SESSION);
 
 if (isset($_GET['room']) && isset($_GET['id'])) {
     $room = $_GET['room'];
