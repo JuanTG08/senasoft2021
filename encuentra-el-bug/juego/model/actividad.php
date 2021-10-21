@@ -54,4 +54,8 @@ class Actividad{
         }
         return $response;
     }
+
+    public function changeStatusPlayer(){
+        $sql = $this->db->query("UPDATE players SET status='Inactivo' WHERE id_player='{$this->getIdJugador()}'");
+    }
 }

@@ -38,8 +38,8 @@ $(document).ready(function(){
 
     setInterval(() => {
         conexionPlayerDoom();
-        //saveStatus();
-    }, 5000);
+        saveStatus();
+    }, 3000);
 
 });
 

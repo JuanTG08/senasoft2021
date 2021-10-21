@@ -84,6 +84,22 @@ class juegoController{
         }
     }
 
+    public static function verifyStatus() {
+        $verify = true;
+        if (isset($_SESSION['Jugador'])) {
+            $jugador = new Jugador();
+            $jugador->setId($_SESSION['Jugador']);
+            $very = $jugador->veryIdPlayer();
+
+            if ($very) {
+                if ($very->status == 'Inactivo') {
+                    $verify = false;
+                }
+            }
+        }
+        return $verify;
+    }
+
     public function doomActualizar(){
         $this->actualizarRoom();
         var_dump($_SESSION['room']);

@@ -9,7 +9,7 @@ session_start();
 if (isset($_POST['saveStatus']) && isset($_SESSION['Jugador'])) {
     $actividad = new actividadController();
     $actividad->guardarEstadoJugador();
-}else if (isset($_POST['compStatus']) && isset($_SESSION['Jugador'])) {
+}else if (isset($_POST['compStatus']) && isset($_SESSION['Jugador']) && isset($_SESSION['room'])) {
     $status = json_decode($_POST['compStatus']);
     $actividad = new actividadController();
     $actividad->verifyStatus($status);
