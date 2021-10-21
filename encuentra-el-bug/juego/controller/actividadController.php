@@ -6,10 +6,27 @@ require_once 'model/actividad.php';
 require_once 'model/jugador.php';
 
 class actividadController{
+
+    // Obtenemos todos los jugadores de la sala
     public function getStatusPlayers(){
         $jugadores_ = new Actividad();
         $jugadores = $jugadores_->getStatusPlayers($_SESSION['room']->player_1,$_SESSION['room']->player_2,$_SESSION['room']->player_3,$_SESSION['room']->player_4);
+        
         return $jugadores;
+    }
+
+    // Establecemos el tiempo de actividad del Jugador
+    public function setActividadPlayer() {
+        $state = new Actividad();
+        $state->setIdRoom($_SESSION['room']->id_room);
+        $state->setIdJugador($_SESSION['Jugador']->id_player);
+
+        if ($state->verifyStatePlayer()) {
+            $state->updateStatePlayer();
+        }else{
+            $state->setStatePlayer();
+        }
+        echo json_encode($state->selectStatesPlayers());
     }
 
     public function verifyStatusPlayers($Players){
@@ -20,6 +37,23 @@ class actividadController{
             }
             
         }
+    }
+
+    // Verifica Actividad de los Jugadores
+    public function verifyStatus($status) {
+        for ($i=0; $i < count($status); $i++) { 
+            if ($status[$i][2] < date('H:i:s', time()-10)) {
+                $change_status = new Actividad();
+                $change_status->setIdJugador($status[$i][1]);
+                $change_status->changeStatusPlayer();
+                //$change_status->deletePlayerOnlien();
+                //echo "incativo".$status[$i][1];
+            }
+        }
+    }
+
+    public function getRoom(){
+        echo json_encode($_SESSION['room']);
     }
 
     /*

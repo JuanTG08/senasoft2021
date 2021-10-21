@@ -12,7 +12,7 @@ if (isset($_POST['actualizarPlayers'])) {
     $room_U = new juegoController();
     $room_U->actualizarRoom();
 
-    var_dump($_SESSION['room']);
+    //var_dump($_SESSION['room']);
 
     $controller = new actividadController();
     $Players = $controller->getStatusPlayers();
@@ -21,6 +21,12 @@ if (isset($_POST['actualizarPlayers'])) {
 }else if (isset($_POST['actualizarDOMJugadores'])) {
     $actualizar = new juegoController();
     $actualizar->indJugador();
+}else if (isset($_POST['insertActivityPlayer'])) {
+    $controller = new actividadController();
+    $controller->setActividadPlayer();
+}else if (isset($_POST['verifyActifityOnline'])) {
+    $controller = new actividadController();
+    $controller->verifyStatus(json_decode($_POST['verifyActifityOnline']));
 }
 
 /*

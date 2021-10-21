@@ -1,6 +1,5 @@
 // let actividad_j = [];
 $(document).ready(function(){
-    console.log(FUNCIONALIDAD);
     if (FUNCIONALIDAD == "load-play") {
         const actualizarStateJugadores = () => {
             $.ajax({
@@ -8,24 +7,50 @@ $(document).ready(function(){
                 url: "peticiones.php",
                 data: { actualizarPlayers : 1 },
                 success: function (response) {
-                    console.log(response);
+                    actualizarActividadJugador();
                 }
             });
         }
 
+        // Actualizamos el DOM para los jugadores
         const actualizarDOMJugadores = () => {
             $.ajax({
                 type: "POST",
                 url: "peticiones.php",
                 data: { actualizarDOMJugadores : 1 },
                 success: function (response) {
-                    //console.log(response);
+                    let cpanel = document.querySelector("#cpanel-acti");
+                    cpanel.innerHTML = response;
                 }
             });
         }
 
+        const actualizarActividadJugador = () => {
+            $.ajax({
+                type: "POST",
+                url: "peticiones.php",
+                data: { insertActivityPlayer : 1 },
+                success: function (response) {
+                    cambiarEstadoPlayer(response);
+                }
+            });
+        }
+
+        const cambiarEstadoPlayer = (timpos) => {
+            $.ajax({
+                type: "POST",
+                url: "peticiones.php",
+                data: { verifyActifityOnline : timpos },
+                success: function (response) {
+                }
+            });
+        }
+        actualizarStateJugadores();
+        actualizarDOMJugadores();
+
         setInterval(() => {
             actualizarStateJugadores();
+            actualizarDOMJugadores();
         }, 500);
     }
 

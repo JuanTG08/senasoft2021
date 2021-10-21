@@ -51,8 +51,38 @@ class Actividad{
         }
         //var_dump($_SESSION['room']);
         $sql = $this->db->query("UPDATE room SET ".$posicion."=NULL WHERE id_room=".$_SESSION['room']->id_room);
+        echo $id;
+        $delete = $this->db->query("DELETE FROM actividad WHERE id_room=".$_SESSION['room']->id_room." AND id_jugador=".$id);
     }
 
+    public function setStatePlayer(){
+        $sql = $this->db->query("INSERT INTO actividad VALUES ('{$this->getIdRoom()}','{$this->getIdJugador()}','".date('H:i:s', time())."')");
+    }
+    public function updateStatePlayer(){
+        $sql = $this->db->query("UPDATE actividad SET tiempo='".date('H:i:s', time())."' WHERE id_room='{$this->getIdRoom()}' AND id_jugador='{$this->getIdJugador()}'");
+    }
+
+    public function verifyStatePlayer(){
+        $response = false;
+        $sql = $this->db->query("SELECT * FROM actividad WHERE id_room='{$this->getIdRoom()}' AND id_jugador='{$this->getIdJugador()}'");
+        if ($sql->num_rows > 0) {
+            $response = true;
+        }
+        return $response;
+    }
+
+    public function selectStatesPlayers(){
+        $response = false;
+        $sql = $this->db->query("SELECT * FROM actividad WHERE id_room='{$this->getIdRoom()}'");
+        if ($sql->num_rows > 0) {
+            $response = $sql->fetch_all();
+        }
+        return $response;
+    }
+
+    public function changeStatusPlayer(){
+        $sql = $this->db->query("UPDATE players SET status='Inactivo' WHERE id_player='{$this->getIdJugador()}'");
+    }
     /*
     public function setStatePlayer(){
         $sql = $this->db->query("INSERT INTO actividad VALUES ('{$this->getIdRoom()}','{$this->getIdJugador()}','".date('H:i:s', time())."')");
