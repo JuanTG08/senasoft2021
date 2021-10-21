@@ -59,5 +59,9 @@ if (isset($_GET['Salir'])) {
     $jugador = new juegoController();
     $jugador->salirJuego();
 }
+if (!isset($_GET['Cartas'])) {
+    $jugador = new cartaController();
+    $jugador->obtenerCartas();
+}
 
 require_once 'views/main/footer.php';

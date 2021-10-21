@@ -6,5 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Encuentra el Bug</title>
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
+    <script>
+        var URL_ = window.location;
+        console.log(URL_);
+    </script>
 </head>
 <body class="container">

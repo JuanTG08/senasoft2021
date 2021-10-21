@@ -1,5 +1,6 @@
 <?php
 require_once 'model/jugador.php';
+require_once 'model/rooms.php';
 // Se crea el controlador del juego
 class juegoController{
     // Funcion para establecer a los jugadores
@@ -34,6 +35,7 @@ class juegoController{
     }
 
     public function indJugador(){
+        $this->actualizarRoom();
         $posicion = false;
         if (isset($_SESSION['Jugador']) && isset($_SESSION['room'])) {
             $name_ = new Jugador();
@@ -44,10 +46,6 @@ class juegoController{
             }
             $player = $_SESSION['Jugador']->id_player;
             $room = $_SESSION['room'];
-
-            $obj_jug = {
-                $j1 -> $room->player_1;
-            }
             
             switch ($player) {
                 case $room->player_1:
@@ -63,14 +61,30 @@ class juegoController{
                     $posicion = 'Jugador 4';
                     break;
                 default:
-                    Utils::deleteSession('Jugador');
-                    Utils::deleteSession('room');
+                    Utils::exitPlay();
                     header('Location:../juego/');
                     break;
             }
             require_once 'views/juego/titulo.php';
             require_once 'views/juego/actividad.php';
         }
+    }
+
+    public function actualizarRoom(){
+        $room = new Room();
+        $room->setId($_SESSION['room']->id_room);
+        $room->setHexadecimal($_SESSION['room']->hexadecimal);
+        $getRoom = $room->getRoom();
+
+        if ($getRoom) {
+            Utils::deleteSession('room');
+            $_SESSION['room'] = $getRoom;
+        }
+    }
+
+    public function doomActualizar(){
+        $this->actualizarRoom();
+        var_dump($_SESSION['room']);
     }
 
     public function salirJuego(){

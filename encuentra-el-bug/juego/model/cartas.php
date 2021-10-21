@@ -43,7 +43,7 @@ class Cartas{
         $response = false;
         $query = $this->db->query("SELECT * FROM cartas");
         if ($query) {
-            $response = $query->fetch_object();
+            $response = $query->fetch_all();
         }
         return $response;
     }

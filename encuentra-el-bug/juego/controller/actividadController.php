@@ -15,6 +15,6 @@ class actividadController{
     }
 
     public function verifyStatus($status) {
-        echo count($status);
+        var_dump($status);
     }
 }

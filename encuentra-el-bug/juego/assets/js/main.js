@@ -3,7 +3,7 @@ $(document).ready(function(){
     const saveStatus = () => {
         $.ajax({
             type: "POST",
-            url: "http://localhost/juego/peticiones.php",
+            url: URL_+"peticiones.php",
             data: { saveStatus : 1 },
             success: function (response) {
                 if (response) {
@@ -16,7 +16,7 @@ $(document).ready(function(){
     const veryStatus = (actividad) => {
         $.ajax({
             type: "POST",
-            url: "http://localhost/juego/peticiones.php",
+            url: URL_+"peticiones.php",
             data: { compStatus : actividad },
             success: function (response) {
                 console.log(response);
@@ -24,8 +24,20 @@ $(document).ready(function(){
         });
     }
 
+    const conexionPlayerDoom = () => {
+        $.ajax({
+            type: "GET",
+            url: URL_+"peticiones.php",
+            data: { doomReload : 1 },
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    }
+
     setInterval(() => {
-        saveStatus();
+        conexionPlayerDoom();
+        //saveStatus();
     }, 5000);
 
 });
