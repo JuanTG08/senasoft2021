@@ -65,8 +65,10 @@ class juegoController{
                     header('Location:../juego/');
                     break;
             }
-            require_once 'views/juego/titulo.php';
-            require_once 'views/juego/actividad.php';
+            echo '<div id="cpanel-acti">';
+                require_once 'views/juego/titulo.php';
+                require_once 'views/juego/actividad.php';
+            echo '</div>';
         }
     }
 

@@ -10,8 +10,19 @@ class cartacontroller{
         if ($Cartas) {
             $_SESSION['Cartas'] = $Cartas;
         }
-        var_dump( $_SESSION['Cartas'][3]);
+        
     }
+
+    public function Logica(){
+        $cartas=[
+            [1,2,3,4,5,7],
+            [8,9,10,11,12],
+            [13,14,15,16,17]
+        ];
+        $cartas_sistem=[];
+
+    }
+
 
     public function salirJuego(){
         Utils::exitPlay();

@@ -18,5 +18,8 @@ class Utils{
         if (isset($_SESSION['Jugadores'])) {
             Utils::deleteSession('Jugadores');
         }
+        if (isset($_SESSION['Cartas'])) {
+            Utils::deleteSession('Cartas');
+        }
     }
 }

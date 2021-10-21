@@ -59,7 +59,7 @@ if (isset($_GET['Salir'])) {
     $jugador = new juegoController();
     $jugador->salirJuego();
 }
-if (!isset($_GET['Cartas'])) {
+if (isset($_GET['Cartas'])) {
     $jugador = new cartaController();
     $jugador->obtenerCartas();
 }

@@ -1,4 +1,4 @@
-<div class="row" id="cpanel-acti">
+<div class="row">
     <div class="col-sm-4">
         <h4 class="text-center">Jugadores</h4>
         <div class="row">

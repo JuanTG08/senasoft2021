@@ -30,7 +30,8 @@ $(document).ready(function(){
             url: URL_+"peticiones.php",
             data: { doomReload : 1 },
             success: function (response) {
-                console.log(response);
+                let cpanel = document.querySelector("#cpanel-acti");
+                cpanel.innerHTML = response;
             }
         });
     }
