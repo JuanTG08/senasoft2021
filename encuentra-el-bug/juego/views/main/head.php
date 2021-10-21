@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <script>
         var URL_ = window.location;
+        var FUNCIONALIDAD = "inicio";
         console.log(URL_);
     </script>
 </head>

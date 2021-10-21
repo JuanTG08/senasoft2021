@@ -30,6 +30,30 @@ class Actividad{
         $this->db = Conexion::conect();
     }
 
+    public function getStatusPlayers($id_1,$id_2,$id_3,$id_4){
+        $response = false;
+        $sql = $this->db->query("SELECT * FROM players WHERE id_player='{$id_1}' OR id_player='{$id_2}' OR id_player='{$id_3}' OR id_player='{$id_4}'");
+        if ($sql->num_rows > 0) {
+            $response = $sql->fetch_all();
+        }
+        return $response;
+    }
+
+    public function deleateInactivePlayers($id){
+        if ($_SESSION['room']->player_1 == $id) {
+            $posicion = "player_1";
+        }else if ($_SESSION['room']->player_2 == $id) {
+            $posicion = "player_2";
+        }else if ($_SESSION['room']->player_3 == $id) {
+            $posicion = "player_3";
+        }else if ($_SESSION['room']->player_4 == $id) {
+            $posicion = "player_4";
+        }
+        //var_dump($_SESSION['room']);
+        $sql = $this->db->query("UPDATE room SET ".$posicion."=NULL WHERE id_room=".$_SESSION['room']->id_room);
+    }
+
+    /*
     public function setStatePlayer(){
         $sql = $this->db->query("INSERT INTO actividad VALUES ('{$this->getIdRoom()}','{$this->getIdJugador()}','".date('H:i:s', time())."')");
     }
@@ -81,4 +105,5 @@ class Actividad{
     public function changeStatusPlayer(){
         $sql = $this->db->query("UPDATE players SET status='Inactivo' WHERE id_player='{$this->getIdJugador()}'");
     }
+    */
 }

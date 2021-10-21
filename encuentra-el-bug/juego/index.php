@@ -12,7 +12,7 @@ require_once 'controller/IndexController.php';
 require_once 'views/main/head.php';
 
 session_start();
-
+var_dump($_SESSION['room']);
 // Verificacion de Estado
 if (!juegoController::verifyStatus()) {
     require_once 'views/rooms/inactivo.php';

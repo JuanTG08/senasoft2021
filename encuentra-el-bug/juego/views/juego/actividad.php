@@ -1,3 +1,4 @@
+<?php echo "<script>FUNCIONALIDAD='load-play'</script>"; ?>
 <div class="row">
     <div class="col-sm-4">
         <h4 class="text-center">Jugadores</h4>

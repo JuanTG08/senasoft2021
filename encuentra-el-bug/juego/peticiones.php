@@ -6,8 +6,24 @@ require_once 'controller/juegoController.php';
 
 session_start();
 
-var_dump($_SESSION['room']);
+//var_dump($_SESSION['room']);
 
+if (isset($_POST['actualizarPlayers'])) {
+    $room_U = new juegoController();
+    $room_U->actualizarRoom();
+
+    var_dump($_SESSION['room']);
+
+    $controller = new actividadController();
+    $Players = $controller->getStatusPlayers();
+
+    $controller->verifyStatusPlayers($Players);
+}else if (isset($_POST['actualizarDOMJugadores'])) {
+    $actualizar = new juegoController();
+    $actualizar->indJugador();
+}
+
+/*
 if (isset($_POST['saveStatus']) && isset($_SESSION['Jugador'])) {
     $actividad = new actividadController();
     $actividad->guardarEstadoJugador();
@@ -24,3 +40,4 @@ if (isset($_POST['diePlayers'])) {
     $dieP = new actividadController();
     $dieP->diePlayers();
 }
+*/

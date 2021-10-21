@@ -6,6 +6,23 @@ require_once 'model/actividad.php';
 require_once 'model/jugador.php';
 
 class actividadController{
+    public function getStatusPlayers(){
+        $jugadores_ = new Actividad();
+        $jugadores = $jugadores_->getStatusPlayers($_SESSION['room']->player_1,$_SESSION['room']->player_2,$_SESSION['room']->player_3,$_SESSION['room']->player_4);
+        return $jugadores;
+    }
+
+    public function verifyStatusPlayers($Players){
+        $actividad = new Actividad();
+        for ($i=0; $i < count($Players); $i++) {
+            if ($Players[$i][2] == "Inactivo") {
+                $actividad->deleateInactivePlayers($Players[$i][0]);
+            }
+            
+        }
+    }
+
+    /*
     public function guardarEstadoJugador(){
         $state = new Actividad();
         $state->setIdRoom($_SESSION['room']->id_room);
@@ -43,5 +60,5 @@ class actividadController{
                 }
             }
         }
-    }
+    }*/
 }

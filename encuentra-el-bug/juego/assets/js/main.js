@@ -1,57 +1,33 @@
 // let actividad_j = [];
 $(document).ready(function(){
-    const saveStatus = () => {
-        $.ajax({
-            type: "POST",
-            url: URL_+"peticiones.php",
-            data: { saveStatus : 1 },
-            success: function (response) {
-                if (response) {
-                    veryStatus(response);
+    console.log(FUNCIONALIDAD);
+    if (FUNCIONALIDAD == "load-play") {
+        const actualizarStateJugadores = () => {
+            $.ajax({
+                type: "POST",
+                url: "peticiones.php",
+                data: { actualizarPlayers : 1 },
+                success: function (response) {
+                    console.log(response);
                 }
-            }
-        });
-    }
+            });
+        }
 
-    const veryStatus = (actividad) => {
-        $.ajax({
-            type: "POST",
-            url: URL_+"peticiones.php",
-            data: { compStatus : actividad },
-            success: function (response) {
-                //console.log(response);
-            }
-        });
-    }
+        const actualizarDOMJugadores = () => {
+            $.ajax({
+                type: "POST",
+                url: "peticiones.php",
+                data: { actualizarDOMJugadores : 1 },
+                success: function (response) {
+                    //console.log(response);
+                }
+            });
+        }
 
-    const conexionPlayerDoom = () => {
-        $.ajax({
-            type: "GET",
-            url: URL_+"peticiones.php",
-            data: { doomReload : 1 },
-            success: function (response) {
-                let cpanel = document.querySelector("#cpanel-acti");
-                cpanel.innerHTML = response;
-            }
-        });
+        setInterval(() => {
+            actualizarStateJugadores();
+        }, 500);
     }
-
-    const diePlayers = () => {
-        $.ajax({
-            type: "POST",
-            url: URL_+"peticiones.php",
-            data: { diePlayers : 1 },
-            success: function (response) {
-                console.log(response);
-            }
-        });
-    }
-
-    setInterval(() => {
-        conexionPlayerDoom();
-        saveStatus();
-        diePlayers();
-    }, 500);
 
 });
 
