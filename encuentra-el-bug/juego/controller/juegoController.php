@@ -88,7 +88,7 @@ class juegoController{
         $verify = true;
         if (isset($_SESSION['Jugador'])) {
             $jugador = new Jugador();
-            $jugador->setId($_SESSION['Jugador']);
+            $jugador->setId($_SESSION['Jugador']->id_player);
             $very = $jugador->veryIdPlayer();
 
             if ($very) {

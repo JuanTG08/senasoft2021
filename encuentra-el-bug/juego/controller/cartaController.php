@@ -4,15 +4,14 @@ require_once 'model/cartas.php';
 class cartacontroller{
     public function Logica(){
         $cartas=[
-            [1,2,3,4,5,7],
-            [8,9,10,11,12],
-            [13,14,15,16,17]
+            [1,2,3,4,5,6,7],
+            [8,9,10,11,12,13],
+            [14,15,16,17,18,19]
         ];
-        $cartas_sistem1=[];
-        array_push($cartas_sistem1, rand(1,7));
-        array_push($cartas_sistem1, rand(1,6));
-        array_push($cartas_sistem1, rand(1,6));
-        $cartas_sistem=[$cartas[0][$cartas_sistem1[0]], $cartas[0][$cartas_sistem1[1]], $cartas[0][$cartas_sistem1[2]]];
+        $indice1 = rand(0,6);
+        $indice2 = rand(0,5);
+        $indice3 = rand(0,5);
+        $cartas_sistem=[$cartas[0][$indice1], $cartas[1][$indice2], $cartas[2][$indice3]];
 
         $cartas_asign=[];
         for ($i=0; $i < 4; $i++) {
@@ -22,8 +21,14 @@ class cartacontroller{
                 if ($cartas_asign[$i] != $cartas_sistem[0]) {
                     if ($cartas_asign[$i] != $cartas_sistem[1]) {
                         if ($cartas_asign[$i] != $cartas_sistem[2]) {
-                            $cartas_asign=rand(1,19);
-                            $r=true;
+                            if ($i>0) {
+                                for ($j=0; $j < $i->count(); $j++) { 
+                                    var_dump('hola');
+                                }
+                            }else{
+                                $cartas_asign=rand(1,19);
+                                $r=true;
+                            }
                         }
                     }
                 }

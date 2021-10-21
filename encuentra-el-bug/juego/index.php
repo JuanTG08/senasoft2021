@@ -66,7 +66,8 @@ if (juegoController::verifyStatus()) {
         $jugador->obtenerCartas();
     }
 }else{
-    
+    require_once 'views/rooms/inactivo.php';
+    Utils::exitPlay();
 }
 
 
