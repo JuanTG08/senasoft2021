@@ -36,6 +36,7 @@ class juegoController{
 
     public function indJugador(){
         $this->actualizarRoom();
+        $iniciador = false;
         $posicion = false;
         if (isset($_SESSION['Jugador']) && isset($_SESSION['room'])) {
             $name_ = new Jugador();
@@ -49,6 +50,7 @@ class juegoController{
             
             switch ($player) {
                 case $room->player_1:
+                    $iniciador = true;
                     $posicion = 'Jugador 1';
                     break;
                 case $room->player_2:
@@ -86,7 +88,6 @@ class juegoController{
     }
 
     public static function verifyStatus() {
-        $verify = true;
         if (isset($_SESSION['Jugador'])) {
             $jugador = new Jugador();
             $jugador->setId($_SESSION['Jugador']->id_player);
@@ -94,11 +95,10 @@ class juegoController{
 
             if ($very) {
                 if ($very->status == 'Inactivo') {
-                    $verify = false;
+                    Utils::exitPlay();
                 }
             }
         }
-        return $verify;
     }
 
     public function doomActualizar(){

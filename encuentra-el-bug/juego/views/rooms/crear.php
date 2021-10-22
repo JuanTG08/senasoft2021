@@ -1,11 +1,22 @@
-<form action="<?= base ?>?room" class="form-control mt-3" method="POST">
-    <!--div class="form-control">
-        <h3 class="text-center">Codigo de la Sala</h3>
-        <input type="text" name="codigo" id="" value="<?php echo dechex(0); ?>" class="form-control text-center fs-4" disabled>
-    </div!-->
-    <div class="mt-2">
-        <label for="nombre">Nombre del Jugador</label>
-        <input type="text" class="form-control" placeholder="Sin nombre" name="nombre">
-        <input type="submit" value="Crear Sala" class="btn btn-success btn-lg form-control mt-3" name="f-crear-sala">
+<h2 class="text-center mt-3 mb-4 text-primary">Crear Sala</h2>
+<form class="form-control" method="POST" action="<?= base ?>?create-room">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="input-group">
+                <span class="input-group-text">Apodo</span>
+                <input type="text" name="nickname" placeholder="Apodo" class="form-control">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="input-group">
+                <span class="input-group-text">Codigo</span>
+                <input type="text" aria-label="First name" class="form-control" name="room" placeholder="FFFFF" maxlength="5" minlength="5" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <input type="submit" value="Unirme" class="btn btn-primary mt-2 form-control" name="unite-room">
+        </div>
     </div>
 </form>

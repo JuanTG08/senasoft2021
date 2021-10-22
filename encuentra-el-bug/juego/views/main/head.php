@@ -9,7 +9,6 @@
     <script>
         var URL_ = window.location;
         var FUNCIONALIDAD = "inicio";
-        console.log(URL_);
     </script>
 </head>
 <body class="container">

@@ -13,9 +13,9 @@ class cartacontroller{
         $indice3 = rand(0,5);
         $cartas_sistem=[$cartas[0][$indice1], $cartas[1][$indice2], $cartas[2][$indice3]];
 
+        var_dump( json_encode($cartas_sistem));
         $cartas_asign=[];
         
-        var_dump( json_encode($cartas_sistem));
         while (count($cartas_asign) <= 3) {
             
             $num=rand(1,19);
@@ -25,7 +25,7 @@ class cartacontroller{
            
         }
         var_dump( json_encode($cartas_asign));
-        // $cartas_select=[];
+        $cartas_select=[];
     }
     // Funcion para establecer a los jugadores
     public function obtenerCartas(){
@@ -37,12 +37,5 @@ class cartacontroller{
         }
         $this->Logica();
        
-    }
-
-    
-
-    public function salirJuego(){
-        Utils::exitPlay();
-        header('Location:../juego/');
     }
 }

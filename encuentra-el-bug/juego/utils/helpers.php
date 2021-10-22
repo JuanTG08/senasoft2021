@@ -21,5 +21,20 @@ class Utils{
         if (isset($_SESSION['Cartas'])) {
             Utils::deleteSession('Cartas');
         }
+        if (isset($_SESSION['Start_'])) {
+            Utils::deleteSession('Start_');
+        }
+        if (isset($_SESSION['Start'])) {
+            Utils::deleteSession('Start');
+        }
+        if (isset($_SESSION['ConfirmGame'])) {
+            Utils::deleteSession('ConfirmGame');
+        }
+        if (isset($_SESSION['CartasSistem'])) {
+            Utils::deleteSession('CartasSistem');
+        }
+        if (isset($_SESSION['CartasInicio'])) {
+            Utils::deleteSession('CartasInicio');
+        }
     }
 }

@@ -35,13 +35,13 @@ class actividadController{
             if ($Players[$i][2] == "Inactivo") {
                 $actividad->deleateInactivePlayers($Players[$i][0]);
             }
-            
         }
     }
 
     // Verifica Actividad de los Jugadores
     public function verifyStatus($status) {
-        for ($i=0; $i < count($status); $i++) { 
+        for ($i=0; $i < count($status); $i++) {
+            //echo "  BD :".$status[$i][2]."  COMP:".date('H:i:s', time()-10);
             if ($status[$i][2] < date('H:i:s', time()-10)) {
                 $change_status = new Actividad();
                 $change_status->setIdJugador($status[$i][1]);

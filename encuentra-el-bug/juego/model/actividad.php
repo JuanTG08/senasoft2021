@@ -51,7 +51,6 @@ class Actividad{
         }
         //var_dump($_SESSION['room']);
         $sql = $this->db->query("UPDATE room SET ".$posicion."=NULL WHERE id_room=".$_SESSION['room']->id_room);
-        echo $id;
         $delete = $this->db->query("DELETE FROM actividad WHERE id_room=".$_SESSION['room']->id_room." AND id_jugador=".$id);
     }
 
