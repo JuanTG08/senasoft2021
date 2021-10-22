@@ -33,6 +33,9 @@ class Utils{
         if (isset($_SESSION['CartasSistem'])) {
             Utils::deleteSession('CartasSistem');
         }
+        if (isset($_SESSION['CartasAsign'])) {
+            Utils::deleteSession('CartasAsign');
+        }
         if (isset($_SESSION['CartasInicio'])) {
             Utils::deleteSession('CartasInicio');
         }

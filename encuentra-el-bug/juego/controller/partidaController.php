@@ -4,7 +4,7 @@ require_once 'model/cartas.php';
 class partidaController{
     public function index(){
         if ( isset($_SESSION['ConfirmGame']) ) {
-            $_SESSION['ConfirmGame']=true;
+            $_SESSION['ConfirmGame']=false;
         }else{
             $_SESSION['ConfirmGame']=false;
         }
@@ -21,7 +21,7 @@ class partidaController{
             // Comprobamos si existe el jugador
             if ($Cartas) {
                 $_SESSION['Cartas'] = $Cartas;
-                var_dump($_SESSION['Cartas']);
+                // var_dump($_SESSION['Cartas']);
             }
             $cartas=[
                 1,2,3,4,5,6,7,
@@ -49,13 +49,21 @@ class partidaController{
                 
             }
 
-            $CartasAsig = $cartas_->getCartasAsig($cartas_total[3],$cartas_total[4],$cartas_total[5],$cartas_total[6]);
-            if ($CartasAsig) {
-                $_SESSION['CartasAsig'] = $CartasAsig;
-                // $cartas_->setCartasAsig();
+            // if (count($_SESSION['Jugadores'])==1) {
+            //     # code...
+            // }
+            $_SESSION['CartasAsign']=[];
+            $jugadores=$_SESSION['Jugadores']->fetch_all();
+            for ($i=0; $i < count($jugadores); $i++) {
+                $CartasAsig = $cartas_->getCartasAsig($cartas_total[3],$cartas_total[4],$cartas_total[5],$cartas_total[6]);
+                if ($CartasAsig) {
+                    array_push($_SESSION['CartasAsign'], $CartasAsig);
+                    // $cartas_->setCartasAsig( $_SESSION['Jugador']->id_player);
+                }
             }
+            var_dump($_SESSION['Jugadores']);
 
-            $_SESSION['ConfirmGame']=true;
+            $_SESSION['ConfirmGame']=false;
         }
        
     }

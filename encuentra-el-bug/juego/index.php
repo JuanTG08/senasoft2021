@@ -73,5 +73,4 @@ if (isset($_GET['Cartas'])) {
     $Index = new partidaController();
     $Index->index();
 }
-
 require_once 'views/main/footer.php';

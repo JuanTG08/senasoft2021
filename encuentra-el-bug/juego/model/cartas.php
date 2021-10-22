@@ -80,4 +80,20 @@ class Cartas{
 		}
 		return $result;
     }
+    // public function SetCartasAsig($i){
+    //     $query = $this->db->query("SELECT * FROM cartas_asig WHERE id_jugador='{$i}'");
+        
+    //     if (count($query->fetch_all()) >0 ) {
+    //         $sql="UPDATE cartas_sistem SET  id_carta1='{$_SESSION['CartasSistem'][0][0]}',id_carta2='{$_SESSION['CartasSistem'][1][0]}',id_carta3='{$_SESSION['CartasSistem'][2][0]}' WHERE id_room='fffff' ";
+    //         $save=$this->db->query($sql);
+    //     }else{
+    //         $sql="INSERT INTO cartas_sistem VALUES ('fffff','{$_SESSION['CartasSistem'][0][0]}','{$_SESSION['CartasSistem'][1][0]}','{$_SESSION['CartasSistem'][2][0]}');";
+    //         $save=$this->db->query($sql);
+    //     }
+	// 	$result=false;
+	// 	if ($save) {
+	// 		$result=true;
+	// 	}
+	// 	return $result;
+    // }
 }
