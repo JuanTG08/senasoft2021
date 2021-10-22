@@ -9,6 +9,7 @@ require_once 'controller/salaController.php';
 require_once 'controller/cartaController.php';
 require_once 'controller/IndexController.php';
 require_once 'controller/partidaController.php';
+require_once 'controller/preguntasController.php';
 
 require_once 'views/main/head.php';
 
@@ -63,6 +64,9 @@ if (isset($_GET['room']) && isset($_GET['id'])) {
 if (isset($_GET['Start'])) {
     $Partida = new partidaController();
     $Partida->index();
+
+    $turnos = new preguntasController();
+    $turnos->identTurnos();
 }
 
 if (isset($_GET['Salir'])) {
@@ -73,4 +77,5 @@ if (isset($_GET['Cartas'])) {
     $Index = new partidaController();
     $Index->index();
 }
+var_dump($_SESSION);
 require_once 'views/main/footer.php';

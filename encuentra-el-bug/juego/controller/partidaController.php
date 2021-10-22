@@ -4,7 +4,7 @@ require_once 'model/cartas.php';
 class partidaController{
     public function index(){
         if ( isset($_SESSION['ConfirmGame']) ) {
-            $_SESSION['ConfirmGame']=false;
+            $_SESSION['ConfirmGame']=true;
         }else{
             $_SESSION['ConfirmGame']=false;
         }
@@ -53,17 +53,21 @@ class partidaController{
             //     # code...
             // }
             $_SESSION['CartasAsign']=[];
-            $jugadores=$_SESSION['Jugadores']->fetch_all();
-            for ($i=0; $i < count($jugadores); $i++) {
+            for ($i=0; $i < 4; $i++) {
                 $CartasAsig = $cartas_->getCartasAsig($cartas_total[3],$cartas_total[4],$cartas_total[5],$cartas_total[6]);
                 if ($CartasAsig) {
                     array_push($_SESSION['CartasAsign'], $CartasAsig);
-                    // $cartas_->setCartasAsig( $_SESSION['Jugador']->id_player);
                 }
-            }
-            var_dump($_SESSION['Jugadores']);
+                $_SESSION['CartasJ'.$i.'']=$_SESSION['CartasAsign'][0][$i];
+                // $cartas_->setCartasAsig(  $_SESSION['CartasJ'.$i.'']);
+                var_dump( json_encode( $_SESSION['CartasJ'.$i.'']));
 
-            $_SESSION['ConfirmGame']=false;
+            }
+
+            // var_dump($_SESSION['CartasJ3']);
+
+
+            $_SESSION['ConfirmGame']=true;
         }
        
     }
