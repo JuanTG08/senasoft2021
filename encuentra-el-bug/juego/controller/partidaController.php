@@ -1,6 +1,7 @@
 
 <?php
 require_once 'model/cartas.php';
+//iniciar la partida
 class partidaController{
     public function index(){
         if ( isset($_SESSION['ConfirmGame']) ) {
@@ -11,9 +12,10 @@ class partidaController{
         $this->obtenerCartas();
 
         require_once 'views/Partida/main.php';
-        require_once 'views/Partida/modoEscojer.php';
+        //require_once 'views/Partida/responderPreg.php';
         require_once 'views/Partida/cartasEscojer.php';
     }
+    
     public function obtenerCartas(){
         if ( $_SESSION['ConfirmGame']===false) {
             $cartas_ = new Cartas();
@@ -51,17 +53,16 @@ class partidaController{
 
             // if (count($_SESSION['Jugadores'])==1) {
             //     # code...
-            // }
+            //}
             $_SESSION['CartasAsign']=[];
-            for ($i=0; $i < 4; $i++) {
+            for ($i=0; $i < 3; $i++) {
                 $CartasAsig = $cartas_->getCartasAsig($cartas_total[3],$cartas_total[4],$cartas_total[5],$cartas_total[6]);
                 if ($CartasAsig) {
                     array_push($_SESSION['CartasAsign'], $CartasAsig);
                 }
                 $_SESSION['CartasJ'.$i.'']=$_SESSION['CartasAsign'][0][$i];
                 // $cartas_->setCartasAsig(  $_SESSION['CartasJ'.$i.'']);
-                var_dump( json_encode( $_SESSION['CartasJ'.$i.'']));
-
+                // var_dump( json_encode( $_SESSION['CartasJ'.$i.'']));
             }
 
             // var_dump($_SESSION['CartasJ3']);

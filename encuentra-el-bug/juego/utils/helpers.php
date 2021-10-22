@@ -1,5 +1,6 @@
 <?php
 class Utils{
+    
     public static function deleteSession($name){
         if(isset($_SESSION[$name])){
             $_SESSION[$name]=null;
@@ -41,6 +42,15 @@ class Utils{
         }
         if (isset($_SESSION['CartasJ0'])) {
             Utils::deleteSession('CartasJ0');
+        }
+        if (isset($_SESSION['CartasJ1'])) {
+            Utils::deleteSession('CartasJ1');
+        }
+        if (isset($_SESSION['CartasJ2'])) {
+            Utils::deleteSession('CartasJ2');
+        }
+        if (isset($_SESSION['CartasJ3'])) {
+            Utils::deleteSession('CartasJ3');
         }
     }
 }

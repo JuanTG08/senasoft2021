@@ -23,9 +23,14 @@ if (empty($_GET) && empty($_POST) && empty($_SESSION) && !isset($_SESSION['Start
     $Index->index();
 }else if (isset($_GET['create'])) {
     Utils::exitPlay();
-    require_once 'views/rooms/unite.php';
+    require_once 'views/rooms/crear.php';
 }else if (isset($_GET['create']) && isset($_POST['crear-sala'])) {
-   
+    if (isset($_POST['nickname']) && isset($_POST['room'])) {
+        $jugador = new salaController();
+        $jugador->createSala($_POST['nickname'],$_POST['room']);
+    }else{
+        // No se enviaron los campos
+    }
 }
 else if (isset($_GET['unite'])) {
     Utils::exitPlay();
@@ -41,19 +46,21 @@ else if (isset($_GET['unite'])) {
         // No se enviaron los campos
     }
 }
+//se crea si existe por metodo get el room y tambien el id
 if (isset($_GET['room']) && isset($_GET['id'])) {
     $room = $_GET['room'];
 
     $sala = new salaController();
     $sala->getSala($room,2);
-
+//para crear la sala con valor fffff
     if ($_GET['room'] === 'fffff') {
         $Jugador_ = new juegoController();
-
+    //se accede a los jugadores y se dice si existe la sesion jugador
         if ($Jugador_->setJugadores() && isset($_SESSION['Jugador'])) {
             header('Location:../juego/');
         }
     }
+    //
 }else if (isset($_SESSION['Jugador']) && isset($_SESSION['room'])) {
     $jugador = new juegoController();
     $jugador->indJugador();
@@ -62,11 +69,11 @@ if (isset($_GET['room']) && isset($_GET['id'])) {
 }
 
 if (isset($_GET['Start'])) {
-    $Partida = new partidaController();
-    $Partida->index();
-
     $turnos = new preguntasController();
     $turnos->identTurnos();
+
+    $Partida = new partidaController();
+    $Partida->index();
 }
 
 if (isset($_GET['Salir'])) {
@@ -77,5 +84,10 @@ if (isset($_GET['Cartas'])) {
     $Index = new partidaController();
     $Index->index();
 }
-var_dump($_SESSION);
+
+if (isset($_GET['SetPregunta']) && $_POST) {
+    $preguntas = new preguntasController();
+    $preguntas->setQuestion();
+}
+// var_dump($_SESSION);
 require_once 'views/main/footer.php';

@@ -18,6 +18,7 @@ class juegoController{
         }
         return $response;
     }
+    //crear jugador
     public function createJugador($nickname){
         if (isset($nickname)) {
             $response = false;
@@ -33,7 +34,7 @@ class juegoController{
             return $response;
         }
     }
-
+    //actualizar los jugadores
     public function indJugador(){
         $this->actualizarRoom();
         $iniciador = false;
@@ -73,7 +74,7 @@ class juegoController{
             echo '</div>';
         }
     }
-
+     //actualizar la sala
     public function actualizarRoom(){
         $room = new Room();
         $room->setId($_SESSION['room']->id_room);
@@ -86,7 +87,7 @@ class juegoController{
 
         }
     }
-
+    //verificar el estado del jugador
     public static function verifyStatus() {
         if (isset($_SESSION['Jugador'])) {
             $jugador = new Jugador();
@@ -100,12 +101,12 @@ class juegoController{
             }
         }
     }
-
+    //actualizar la sala
     public function doomActualizar(){
         $this->actualizarRoom();
         var_dump($_SESSION['room']);
     }
-
+    //salir del juego
     public function salirJuego(){
         Utils::exitPlay();
         header('Location:../juego/');

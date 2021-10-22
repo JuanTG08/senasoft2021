@@ -29,7 +29,7 @@ class Actividad{
     public function __construct(){
         $this->db = Conexion::conect();
     }
-
+    
     public function getStatusPlayers($id_1,$id_2,$id_3,$id_4){
         $response = false;
         $sql = $this->db->query("SELECT * FROM players WHERE id_player='{$id_1}' OR id_player='{$id_2}' OR id_player='{$id_3}' OR id_player='{$id_4}'");

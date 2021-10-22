@@ -28,7 +28,7 @@ class actividadController{
         }
         echo json_encode($state->selectStatesPlayers());
     }
-
+     //verificar el estado del player
     public function verifyStatusPlayers($Players){
         $actividad = new Actividad();
         for ($i=0; $i < count($Players); $i++) {

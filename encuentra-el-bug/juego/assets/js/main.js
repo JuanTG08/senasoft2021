@@ -62,7 +62,7 @@ $(document).ready(function(){
     }
     // Verificamos los jugadores
     const veryStart = (players) => {
-        if (players.player_2 != null) {
+        if (players.player_1 != null) {
             $.ajax({
                 type: "POST",
                 url: "peticiones.php",

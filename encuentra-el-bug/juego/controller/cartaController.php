@@ -2,6 +2,7 @@
 require_once 'model/cartas.php';
 // Se crea el controlador del juego
 class cartacontroller{
+    //se agrupan las cartas de forma aleatoria
     public function Logica(){
         $cartas=[
             [1,2,3,4,5,6,7],
