@@ -1,3 +1,4 @@
+<script>FUNCIONALIDAD="ingame"</script>
 <div class="form-control mb-3">
     <div class="row">
         <div class="col-sm-3">

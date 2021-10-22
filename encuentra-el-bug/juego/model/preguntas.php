@@ -49,11 +49,21 @@ class Preguntas{
 
 
         if ($select_tur->num_rows == 0 || $select_tur ==null) {
-            var_dump($select_tur->fetch_object());
-            $create_reg = $this->db->query("INSERT INTO preguntas VALUES ('{$programador}','{$modelo}','{$error}')");
-            $comp = true;
+            $create_reg = $this->db->query("INSERT INTO preguntas VALUES ('{$_SESSION['room']->id_room}',{$programador},{$modelo},{$error})");
+            if ($create_reg) {
+                $comp = true;
+            }
         }
 
         return $comp;
+    }
+
+
+    public function getTurnos(){
+        return $this->db->query("SELECT * FROM turnos WHERE id_room=".$_SESSION['room']->id_room)->fetch_object();
+    }
+
+    public function getCartas($card1, $card2, $card3) {
+        $sql = $this->db;
     }
 }

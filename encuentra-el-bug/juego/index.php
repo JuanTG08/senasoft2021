@@ -24,10 +24,18 @@ if (empty($_GET) && empty($_POST) && empty($_SESSION) && !isset($_SESSION['Start
 }else if (isset($_GET['create'])) {
     Utils::exitPlay();
     require_once 'views/rooms/crear.php';
-}else if (isset($_GET['create']) && isset($_POST['crear-sala'])) {
+}else if (isset($_GET['create-room']) && isset($_POST['create-room'])) {
     if (isset($_POST['nickname']) && isset($_POST['room'])) {
-        $jugador = new salaController();
-        $jugador->createSala($_POST['nickname'],$_POST['room']);
+        // $jugador = new salaController();
+        // $jugador->createSala($_POST['nickname'],$_POST['room']);
+        $jugador = new juegoController();
+        $jugador->createJugador($_POST['nickname']);
+
+        $ingresar = new salaController();
+        $ingresar->createRoom($_POST['room']);
+
+        $ingresar = new salaController();
+        $ingresar->getSala($_POST['room']);
     }else{
         // No se enviaron los campos
     }

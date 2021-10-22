@@ -28,4 +28,22 @@ class preguntasController{
             $setpreg = $preg->setQuestion($_POST['escojerPR'],$_POST['escojerM'],$_POST['escojerER']);
         }
     }
+
+    public function getTurnos(){
+        $execute = new Preguntas();
+
+        echo json_encode($execute->getTurnos());
+    }
+
+    public function getQuest(){
+        $query = new Preguntas();
+        $preguntas = $query->escojerPreguntas();
+        if ($preguntas) {
+            echo json_encode($preguntas->fetch_object());
+        }
+    }
+
+    public function renderPregunta($info){
+        $controller = new Preguntas();
+    }
 }

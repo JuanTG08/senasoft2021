@@ -28,7 +28,7 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <input type="submit" value="Crear" class="btn btn-primary mt-2 form-control" name="crear-sala">
+            <input type="submit" value="Crear" class="btn btn-primary mt-2 form-control" name="create-room">
         </div>
     </div>
 </form>

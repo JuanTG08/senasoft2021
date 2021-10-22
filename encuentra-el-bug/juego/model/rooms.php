@@ -48,4 +48,16 @@ class Room{
         }
         return $response;
     }
+
+    public function createRoom(){
+		$sql="INSERT INTO room VALUES (NULL,'{$this->getHexadecimal()}','Activo');";
+		$save=$this->db->query($sql);
+        $jugador = $this->db->query('SELECT * FROM players WHERE id_player=LAST_INSERT_ID()');
+
+		$result=false;
+		if ($save && $jugador) {
+			$result=$jugador->fetch_object();
+		}
+		return $result;
+	}
 }
