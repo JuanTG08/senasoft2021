@@ -20,5 +20,6 @@ if (isset($_POST['statusTurno'])) {
         $controller->getQuest();
     }
 }else if (isset($_POST['renderQuestion'])) {
-    $_POST['renderQuestion'];
+    $controller = new preguntasController();
+    $controller->renderPregunta($_POST['renderQuestion']);
 }

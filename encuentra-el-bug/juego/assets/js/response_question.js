@@ -34,7 +34,9 @@ $(document).ready(function () {
             url: "ingame.php",
             data: { renderQuestion : info_pregunta },
             success: function (response) {
-                console.log(response);
+                if (document.getElementById('pregunta-quest')) {
+                    document.getElementById('pregunta-quest').innerHTML = response;
+                }
             }
         });
     }

@@ -62,8 +62,4 @@ class Preguntas{
     public function getTurnos(){
         return $this->db->query("SELECT * FROM turnos WHERE id_room=".$_SESSION['room']->id_room)->fetch_object();
     }
-
-    public function getCartas($card1, $card2, $card3) {
-        $sql = $this->db;
-    }
 }

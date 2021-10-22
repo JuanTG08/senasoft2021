@@ -44,6 +44,13 @@ class preguntasController{
     }
 
     public function renderPregunta($info){
-        $controller = new Preguntas();
+        if (!empty($info)) {
+            $programador = $_SESSION['Cartas'][$info['programador']-1][1];
+            $modelo = $_SESSION['Cartas'][$info['modelo']-1][1];
+            $error = $_SESSION['Cartas'][$info['error']-1][1];
+            require_once 'views/Partida/responderPreg.php';
+        }else{
+            require_once 'views/Partida/loadQuest.php';
+        }
     }
 }

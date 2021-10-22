@@ -9,7 +9,7 @@
                     <?php for ($i=0; $i < 3; $i++): ?>
                         <div class="col-sm-12 mb-2">
                             <button class="form-control">
-                                <span class="text-break">AAAAAAAAAAAAAAAAAAAA</span>
+                                <span class="text-break"><?= $_SESSION['Cartas'][$i][1] ?></span>
                                 <img src="./images/poderosa.jpg" alt="" srcset="" width="100%">
                             </button>
                         </div>

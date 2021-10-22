@@ -50,9 +50,9 @@ class Room{
     }
 
     public function createRoom(){
-		$sql="INSERT INTO room VALUES (NULL,'{$this->getHexadecimal()}','Activo');";
+		$sql="INSERT INTO room VALUES (NULL,'{$this->getHexadecimal()}',NULL,NULL,NULL,NULL,'Activo');";
 		$save=$this->db->query($sql);
-        $jugador = $this->db->query('SELECT * FROM players WHERE id_player=LAST_INSERT_ID()');
+        $jugador = $this->db->query('SELECT * FROM room WHERE id_room=LAST_INSERT_ID()');
 
 		$result=false;
 		if ($save && $jugador) {

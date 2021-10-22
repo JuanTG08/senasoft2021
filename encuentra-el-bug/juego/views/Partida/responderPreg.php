@@ -1,6 +1,6 @@
 <div class="form-control mb-3">
     <h3>Responder :</h3>
-    <h4>¿Programador Pepito peres? o el ¿Modulo Contabilidad? o el ¿Error 404?</h4>
+    <h4>¿Programador <?= $programador ?>? o el ¿Modulo <?= $modelo ?>? o el ¿Error <?= $error ?>?</h4>
     <form class="row" action="" method="POST">
         <div class="col-sm-8">
             <select name="" id="" class="form-control">

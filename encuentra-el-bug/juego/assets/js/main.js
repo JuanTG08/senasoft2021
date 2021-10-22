@@ -62,7 +62,7 @@ $(document).ready(function(){
     }
     // Verificamos los jugadores
     const veryStart = (players) => {
-        if (players.player_1 != null) {
+        if (players.player_1 != null && players.player_2 != null && players.player_3 != null && players.player_4 != null) {
             $.ajax({
                 type: "POST",
                 url: "peticiones.php",
@@ -72,6 +72,7 @@ $(document).ready(function(){
                     cpanel.innerHTML = "";
                 }
             });
+            document.querySelector("#cpanel-acti").innerHTML = "";
             location.href = '?Start';
         }
     }
